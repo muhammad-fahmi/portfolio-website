@@ -65,22 +65,12 @@ A high-performance, dark-mode portfolio built with **Next.js 14 App Router**, **
 
 ## 🚀 How to Deploy to Vercel
 
-### Option 1: Automatic GitHub Actions CI/CD (Recommended)
-This codebase includes pre-configured GitHub Actions workflows in `.github/workflows/`:
-- **Production Deployment** ([`deploy-vercel.yml`](file:///e:/portfolio/.github/workflows/deploy-vercel.yml)): Triggers automatically on pushes to `main`.
-- **Preview Deployment** ([`preview-vercel.yml`](file:///e:/portfolio/.github/workflows/preview-vercel.yml)): Triggers automatically on Pull Requests.
+Deployment handled directly via Vercel GitHub Integration:
 
-#### Setup GitHub Secrets:
-1. Go to your GitHub repository -> **Settings** -> **Secrets and variables** -> **Actions**.
-2. Add the following repository secrets:
-   - `VERCEL_TOKEN`: Generated from [Vercel Account Settings -> Tokens](https://vercel.com/account/tokens).
-   - `VERCEL_ORG_ID`: Found in `.vercel/project.json` or Vercel Team Settings.
-   - `VERCEL_PROJECT_ID`: Found in `.vercel/project.json` or Vercel Project Settings.
-
----
-
-### Option 2: Direct GitHub & Vercel Integration
 1. Push this repository to GitHub.
-2. Connect the repo on [Vercel Dashboard](https://vercel.com/new).
-3. Vercel will automatically detect **Next.js** and build the application using settings from `vercel.json`.
+2. Go to [Vercel Dashboard](https://vercel.com/new).
+3. Import your GitHub repository (`muhammad-fahmi/portfolio_website`).
+4. Vercel will automatically detect **Next.js** and build the application using settings from [`vercel.json`](file:///e:/portfolio/vercel.json).
+5. Every `git push` will automatically trigger a deployment on Vercel!
+
 
