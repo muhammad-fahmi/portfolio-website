@@ -14,7 +14,7 @@ export function About() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-            About <span className="gradient-text">Mee</span>
+            About <span className="gradient-text">Me</span>
           </h2>
           <div className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 mx-auto rounded-full mb-6" />
           <p className="text-gray-400 text-base sm:text-lg leading-relaxed">

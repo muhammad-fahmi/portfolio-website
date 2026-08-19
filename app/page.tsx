@@ -7,9 +7,10 @@ import { Blog } from "@/components/Blog";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
+
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#090d16] text-gray-100 overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#090d16] text-gray-100 overflow-x-hidden">
       <Navbar />
       <Hero />
       <About />
@@ -18,6 +19,6 @@ export default function Home() {
       <Blog />
       <Contact />
       <Footer />
-    </main>
+    </div>
   );
 }
