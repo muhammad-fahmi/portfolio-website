@@ -38,7 +38,7 @@ export interface BlogPost {
 
 export const PORTFOLIO_DATA = {
   personal: {
-    name: "Alex Morgan",
+    name: "Muhammad Fahmi",
     role: "Senior Full-Stack Engineer",
     tagline: "Architecting scalable web applications, modern UI systems, and cloud backend solutions.",
     bio: "Passionate Senior Full-Stack Engineer with 6+ years of experience building modern web applications, distributed cloud services, and interactive user interfaces. Specialized in React, Next.js, Node.js, TypeScript, and cloud-native architecture.",
