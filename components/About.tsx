@@ -62,11 +62,11 @@ export function About() {
             className="lg:col-span-5 grid grid-cols-2 gap-4"
           >
             <div className="glass-panel p-6 rounded-2xl flex flex-col justify-center items-center text-center border border-white/10">
-              <span className="text-4xl font-extrabold gradient-text mb-2">6+</span>
+              <span className="text-4xl font-extrabold gradient-text mb-2">2+</span>
               <span className="text-sm font-medium text-gray-400">Years Experience</span>
             </div>
             <div className="glass-panel p-6 rounded-2xl flex flex-col justify-center items-center text-center border border-white/10">
-              <span className="text-4xl font-extrabold gradient-text mb-2">25+</span>
+              <span className="text-4xl font-extrabold gradient-text mb-2">4+</span>
               <span className="text-sm font-medium text-gray-400">Projects Completed</span>
             </div>
             <div className="glass-panel p-6 rounded-2xl flex flex-col justify-center items-center text-center border border-white/10">
