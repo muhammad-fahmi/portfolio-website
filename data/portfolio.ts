@@ -39,9 +39,9 @@ export interface BlogPost {
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Muhammad Fahmi",
-    role: "Senior Full-Stack Engineer",
+    role: "Full-Stack Developer",
     tagline: "Architecting scalable web applications, modern UI systems, and cloud backend solutions.",
-    bio: "Passionate Senior Full-Stack Engineer with 6+ years of experience building modern web applications, distributed cloud services, and interactive user interfaces. Specialized in React, Next.js, Node.js, TypeScript, and cloud-native architecture.",
+    bio: "Passionate Full-Stack Developer with 2+ years of experience building modern web applications, distributed cloud services, and interactive user interfaces. Specialized in React, Next.js, Node.js, TypeScript, and cloud-native architecture.",
     location: "Tangerang,Banten, Indonesia (Open to Remote)",
     email: "fahmipradana4@gmail.com",
     github: "https://github.com/muhammad-fahmi",
