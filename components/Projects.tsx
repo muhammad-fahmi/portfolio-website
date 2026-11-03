@@ -67,7 +67,6 @@ export function Projects() {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    fetchpriority="high"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-transparent opacity-80" />
                   {project.featured && (
@@ -139,8 +138,8 @@ export function Projects() {
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="w-full h-full object-cover"
                   fetchpriority="high"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
