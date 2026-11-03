@@ -66,7 +66,8 @@ export function Projects() {
                   <img
                     src={project.image}
                     alt={project.title}
-                    fetchPriority="high"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-transparent opacity-80" />
@@ -131,6 +132,7 @@ export function Projects() {
               <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white rounded-full glass-panel"
+                aria-label="Close project details"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -139,7 +141,8 @@ export function Projects() {
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  fetchPriority="high"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>

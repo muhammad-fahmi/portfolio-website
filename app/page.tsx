@@ -7,17 +7,18 @@ import { Blog } from "@/components/Blog";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
-
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#090d16] text-gray-100 overflow-x-hidden">
       <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Experience />
-      <Blog />
-      <Contact />
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Projects />
+        <Experience />
+        <Blog />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );

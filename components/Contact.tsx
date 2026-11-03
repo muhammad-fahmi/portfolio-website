@@ -87,6 +87,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 glass-panel glass-panel-hover rounded-xl text-gray-300 hover:text-cyan-400 transition-colors"
+                  aria-label="GitHub Profile"
                 >
                   <Github className="w-5 h-5" />
                 </a>
@@ -95,6 +96,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 glass-panel glass-panel-hover rounded-xl text-gray-300 hover:text-cyan-400 transition-colors"
+                  aria-label="LinkedIn Profile"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
@@ -103,6 +105,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 glass-panel glass-panel-hover rounded-xl text-gray-300 hover:text-cyan-400 transition-colors"
+                  aria-label="Twitter Profile"
                 >
                   <Twitter className="w-5 h-5" />
                 </a>
