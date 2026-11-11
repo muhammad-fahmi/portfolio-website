@@ -78,7 +78,6 @@ export const PORTFOLIO_DATA = {
       title: "Database & Tools",
       skills: [
         { name: "PostgreSQL" },
-        { name: "MySQL" },
         { name: "Docker" },
         { name: "Git & GitHub" },
         { name: "Python" },
