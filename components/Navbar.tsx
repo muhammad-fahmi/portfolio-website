@@ -9,9 +9,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -21,7 +19,6 @@ export function Navbar() {
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Experience", href: "#experience" },
-    { name: "Articles", href: "#articles" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -35,7 +32,6 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <a
             href="#"
             className="flex items-center gap-2 group font-semibold text-lg text-white"
@@ -49,8 +45,7 @@ export function Navbar() {
             </span>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 glass-panel px-4 py-1.5 rounded-full border border-white/10">
+          <nav className="hidden md:flex items-center gap-1 glass-panel px-4 py-1.5 rounded-full border border-white/10" aria-label="Main navigation">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -62,32 +57,31 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* CTA Button */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href="#contact"
               className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-full shadow-lg shadow-cyan-500/25 transition-all hover:scale-[1.02]"
             >
-              Let's Talk
+              Let&apos;s Talk
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
 
-          {/* Mobile Menu Toggle */}
           <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 text-gray-300 hover:text-white rounded-lg glass-panel"
-            aria-label="Toggle Navigation"
+            aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden glass-panel border-b border-white/10 px-4 pt-3 pb-6 mt-2 animate-in fade-in slide-in-from-top-4">
-          <div className="flex flex-col space-y-2">
+        <div className="md:hidden glass-panel border-b border-white/10 px-4 pt-3 pb-6 mt-2">
+          <nav className="flex flex-col space-y-2" aria-label="Mobile navigation">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -103,9 +97,9 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="mt-2 text-center py-2.5 text-sm font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg shadow-lg"
             >
-              Let's Talk
+              Let&apos;s Talk
             </a>
-          </div>
+          </nav>
         </div>
       )}
     </header>

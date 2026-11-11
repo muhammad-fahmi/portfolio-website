@@ -10,77 +10,74 @@ export function Experience() {
   return (
     <section id="experience" className="py-24 relative z-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="max-w-3xl mb-12">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400 mb-3">
+            Background
+          </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-            Work <span className="gradient-text">Experience</span>
+            Professional <span className="gradient-text">Experience</span>
           </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-violet-500 mx-auto rounded-full mb-6" />
           <p className="text-gray-400 text-base sm:text-lg">
-            My career timeline and key engineering contributions over the years.
+            Experience building and deploying web applications for operational needs.
           </p>
         </div>
 
-        {/* Timeline Container */}
-        <div className="relative border-l-2 border-cyan-500/30 ml-4 sm:ml-8 space-y-12">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+        <div className="space-y-6">
+          {experiences.map((experience, index) => (
+            <motion.article
+              key={experience.id}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative pl-8 sm:pl-10"
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+              className="glass-panel p-6 sm:p-8 rounded-2xl border border-white/10"
             >
-              {/* Dot Icon */}
-              <div className="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-[#090d16] border-2 border-cyan-400 flex items-center justify-center text-cyan-400 shadow-md shadow-cyan-500/30">
-                <Briefcase className="w-4 h-4" />
-              </div>
-
-              {/* Card */}
-              <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 glass-panel-hover">
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-11 h-11 shrink-0 rounded-xl bg-cyan-500/10 text-cyan-300 flex items-center justify-center">
+                    <Briefcase className="w-5 h-5" />
+                  </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">{exp.role}</h3>
-                    <span className="text-cyan-400 font-semibold text-base">
-                      {exp.company}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-400 font-medium">
-                    <span className="inline-flex items-center gap-1 bg-white/5 px-3 py-1 rounded-full border border-white/5">
-                      <Calendar className="w-3.5 h-3.5 text-violet-400" />
-                      {exp.period}
-                    </span>
-                    <span className="inline-flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-gray-400" />
-                      {exp.location}
-                    </span>
+                    <h3 className="text-xl font-bold text-white">{experience.role}</h3>
+                    <p className="text-cyan-300 font-semibold">{experience.company}</p>
                   </div>
                 </div>
-
-                <ul className="space-y-2 mb-6 text-gray-300 text-sm sm:text-base leading-relaxed">
-                  {exp.description.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-cyan-400 mt-1.5 font-bold">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Tech Badges */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {exp.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 rounded-md text-xs font-medium bg-cyan-500/10 text-cyan-300 border border-cyan-500/20"
-                    >
-                      {tech}
+                <div className="flex flex-wrap gap-3 text-xs sm:text-sm text-gray-400">
+                  {experience.period && (
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {experience.period}
                     </span>
-                  ))}
+                  )}
+                  {experience.location && (
+                    <span className="inline-flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {experience.location}
+                    </span>
+                  )}
                 </div>
               </div>
-            </motion.div>
+
+              <ul className="space-y-3 mb-6 text-gray-300 text-sm sm:text-base leading-relaxed">
+                {experience.description.map((item, itemIndex) => (
+                  <li key={itemIndex} className="flex items-start gap-3">
+                    <span className="text-cyan-400 mt-1">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex flex-wrap gap-2 pt-5 border-t border-white/10">
+                {experience.technologies.map((technology) => (
+                  <span
+                    key={technology}
+                    className="px-2.5 py-1 rounded-md text-xs font-medium bg-cyan-500/10 text-cyan-300 border border-cyan-500/20"
+                  >
+                    {technology}
+                  </span>
+                ))}
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
