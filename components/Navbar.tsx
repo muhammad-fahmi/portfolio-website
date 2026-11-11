@@ -1,106 +1,78 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { PORTFOLIO_DATA } from "@/data/portfolio";
-import { Menu, X, Terminal, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+
+const navLinks = [
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 16);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
-  ];
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [mobileMenuOpen]);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-[#090d16]/80 backdrop-blur-md border-b border-white/10 py-3 shadow-lg"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <a
-            href="#"
-            className="flex items-center gap-2 group font-semibold text-lg text-white"
-          >
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyan-500 to-violet-600 flex items-center justify-center text-white shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-              <Terminal className="w-5 h-5" />
-            </div>
-            <span className="tracking-tight">
-              {PORTFOLIO_DATA.personal.name.split(" ")[0]}
-              <span className="text-cyan-400">.dev</span>
-            </span>
+    <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+      isScrolled ? "border-white/10 bg-slate-950/85 py-3 shadow-lg shadow-black/10 backdrop-blur-xl" : "border-transparent bg-slate-950/30 py-5"
+    }`}>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-8">
+        <a href="#home" onClick={() => setMobileMenuOpen(false)} className="text-base font-semibold tracking-tight text-white">
+          {PORTFOLIO_DATA.personal.name.split(" ")[0]}<span className="text-cyan-300">.dev</span>
+        </a>
+
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href} className="rounded-lg px-3.5 py-2 text-sm text-slate-400 transition hover:bg-white/[0.04] hover:text-white">{link.name}</a>
+          ))}
+        </nav>
+
+        <div className="hidden md:block">
+          <a href="#contact" className="inline-flex items-center gap-2 rounded-lg border border-cyan-300/25 bg-cyan-300/[0.08] px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/50 hover:bg-cyan-300/[0.14]">
+            Let&apos;s talk <ArrowUpRight className="h-4 w-4" />
           </a>
-
-          <nav className="hidden md:flex items-center gap-1 glass-panel px-4 py-1.5 rounded-full border border-white/10" aria-label="Main navigation">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="px-3.5 py-1.5 text-sm font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 rounded-full transition-all"
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 rounded-full shadow-lg shadow-cyan-500/25 transition-all hover:scale-[1.02]"
-            >
-              Let&apos;s Talk
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-gray-300 hover:text-white rounded-lg glass-panel"
-            aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          className="rounded-lg border border-white/10 p-2 text-slate-300 transition hover:bg-white/5 hover:text-white md:hidden"
+          aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation"
+        >
+          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden glass-panel border-b border-white/10 px-4 pt-3 pb-6 mt-2">
-          <nav className="flex flex-col space-y-2" aria-label="Mobile navigation">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2 text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 rounded-lg transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 text-center py-2.5 text-sm font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg shadow-lg"
-            >
-              Let&apos;s Talk
-            </a>
-          </nav>
-        </div>
+        <nav id="mobile-navigation" className="mx-4 mt-3 rounded-xl border border-white/10 bg-slate-900 p-3 shadow-2xl md:hidden" aria-label="Mobile navigation">
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)} className="block rounded-lg px-3 py-3 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white">{link.name}</a>
+          ))}
+          <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-cyan-300 px-3 py-3 text-sm font-semibold text-slate-950">
+            Let&apos;s talk <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </nav>
       )}
     </header>
   );
