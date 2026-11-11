@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { PORTFOLIO_DATA } from "@/data/portfolio";
-import { Mail, Send, CheckCircle2, AlertCircle, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Send, CheckCircle2, AlertCircle, Github, Linkedin } from "lucide-react";
 
 export function Contact() {
-  const { email, github, linkedin, twitter } = PORTFOLIO_DATA.personal;
+  const { email, github, linkedin } = PORTFOLIO_DATA.personal;
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
@@ -99,15 +99,6 @@ export function Contact() {
                   aria-label="LinkedIn Profile"
                 >
                   <Linkedin className="w-5 h-5" />
-                </a>
-                <a
-                  href={twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 glass-panel glass-panel-hover rounded-xl text-gray-300 hover:text-cyan-400 transition-colors"
-                  aria-label="Twitter Profile"
-                >
-                  <Twitter className="w-5 h-5" />
                 </a>
               </div>
             </div>
