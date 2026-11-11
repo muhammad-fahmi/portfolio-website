@@ -57,16 +57,16 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <motion.aside initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.12 }} className="relative mx-auto w-full max-w-md" aria-label="Profile and development focus">
+        <motion.aside initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.12 }} className="relative mx-auto w-full max-w-[280px] lg:max-w-[300px]" aria-label="Profile and development focus">
           <div className="absolute -inset-4 -z-10 rounded-[2rem] border border-cyan-300/10 bg-cyan-300/[0.025] rotate-3" />
           <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-slate-900 shadow-2xl shadow-black/30">
-            <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-800">
+            <div className="relative aspect-[4/5] max-h-[350px] w-full overflow-hidden bg-slate-800">
               <Image
                 src="/images/profile-photo.jpg"
                 alt="Portrait of Muhammad Fahmi"
                 fill
                 priority
-                sizes="(max-width: 1024px) 80vw, 420px"
+                sizes="(max-width: 640px) 72vw, 300px"
                 className="object-cover object-center"
               />
               <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/80 to-transparent" />
